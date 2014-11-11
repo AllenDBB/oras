@@ -235,10 +235,265 @@ var commands = exports.commands = {
 	/*********************************************************
 	* CUSTOM CODE HERE!
 	*********************************************************/
+	clearall: function (target, room, user) {
+        if (!this.can('clearall')) return;
+        if (room.battle) return this.sendReply('You cannot do it on battle rooms.');
+        
+        var len = room.log.length,
+            users = [];
+        while (len--) {
+            room.log[len] = '';
+        }
+        for (var user in room.users) {
+            users.push(user);
+            Users.get(user).leaveRoom(room, Users.get(user).connections[0]);
+        }
+        len = users.length;
+        setTimeout(function() {
+            while (len--) {
+                Users.get(users[len]).joinRoom(room, Users.get(users[len]).connections[0]);
+            }
+        }, 1000);
+    },
 	
+	customavatars: 'customavatar',
+    customavatar: (function () {
+        try {
+            const script = (function () {/*
+                FILENAME=`mktemp`
+                function cleanup {
+                    rm -f $FILENAME
+                }
+                trap cleanup EXIT
+
+                set -xe
+
+                timeout 10 wget "$1" -nv -O $FILENAME
+
+                FRAMES=`identify $FILENAME | wc -l`
+                if [ $FRAMES -gt 1 ]; then
+                    EXT=".gif"
+                else
+                    EXT=".png"
+                fi
+
+                timeout 10 convert $FILENAME -layers TrimBounds -coalesce -adaptive-resize 80x80\> -background transparent -gravity center -extent 80x80 "$2$EXT"
+            */}).toString().match(/[^]*\/\*([^]*)\*\/\}$/)[1];
+        } catch (e) {}
+
+        var pendingAdds = {};
+        return function (target) {
+            var parts = target.split(',');
+            var cmd = parts[0].trim().toLowerCase();
+
+            if (cmd in {'': 1, show: 1, view: 1, display: 1}) {
+                var message = '';
+                for (var a in Config.customAvatars)
+                    message += "<strong>" + Tools.escapeHTML(a) + ":</strong> " + Tools.escapeHTML(Config.customAvatars[a]) + "<br />";
+                return this.sendReplyBox(message);
+            }
+
+            if (!this.can('customavatar')) return;
+
+            switch (cmd) {
+            case 'set':
+                var userid = toId(parts[1]);
+                var user = Users.getExact(userid);
+                var avatar = parts.slice(2).join(',').trim();
+
+                if (!userid) return this.sendReply("You didn't specify a user.");
+                if (Config.customAvatars[userid]) return this.sendReply(userid + " already has a custom avatar.");
+
+                var hash = require('crypto').createHash('sha512').update(userid + '\u0000' + avatar).digest('hex').slice(0, 8);
+                pendingAdds[hash] = {userid: userid, avatar: avatar};
+                parts[1] = hash;
+
+                if (!user) {
+                    this.sendReply("Warning: " + userid + " is not online.");
+                    this.sendReply("If you want to continue, use: /customavatar forceset, " + hash);
+                    return;
+                }
+                // Fallthrough
+
+            case 'forceset':
+                var hash = parts[1].trim();
+                if (!pendingAdds[hash]) return this.sendReply("Invalid hash.");
+
+                var userid = pendingAdds[hash].userid;
+                var avatar = pendingAdds[hash].avatar;
+                delete pendingAdds[hash];
+
+                require('child_process').execFile('bash', ['-c', script, '-', avatar, './config/avatars/' + userid], (function (e, out, err) {
+                    if (e) {
+                        this.sendReply(userid + "'s custom avatar failed to be set. Script output:");
+                        (out + err).split('\n').forEach(this.sendReply.bind(this));
+                        return;
+                    }
+
+                    reloadCustomAvatars();
+                    this.sendReply(userid + "'s custom avatar has been set.");
+                }).bind(this));
+                break;
+
+            case 'delete':
+                var userid = toId(parts[1]);
+                if (!Config.customAvatars[userid]) return this.sendReply(userid + " does not have a custom avatar.");
+
+                if (Config.customAvatars[userid].toString().split('.').slice(0, -1).join('.') !== userid)
+                    return this.sendReply(userid + "'s custom avatar (" + Config.customAvatars[userid] + ") cannot be removed with this script.");
+                require('fs').unlink('./config/avatars/' + Config.customAvatars[userid], (function (e) {
+                    if (e) return this.sendReply(userid + "'s custom avatar (" + Config.customAvatars[userid] + ") could not be removed: " + e.toString());
+
+                    delete Config.customAvatars[userid];
+                    this.sendReply(userid + "'s custom avatar removed successfully");
+                }).bind(this));
+                break;
+
+            default:
+                return this.sendReply("Invalid command. Valid commands are `/customavatar set, user, avatar` and `/customavatar delete, user`.");
+            }
+        };
+    })(),
 	
+	eating: 'away',
+	gaming: 'away',
+	game: 'away',
+	sleep: 'away',
+	crie: 'away',
+	cri: 'away',
+	cry: 'away',
+	work: 'away',
+	working: 'away',
+	sleeping: 'away',
+	busy: 'away',
+	draw: 'away',
+	drawing: 'away',
+	afk: 'away',
+	away: function (target, room, user, connection, cmd) {
+		if (!this.can('away')) return false;
+		// unicode away message idea by Siiilver
+		var t = 'Ⓐⓦⓐⓨ';
+		var t2 = 'Away';
+		switch (cmd) {
+			case 'busy':
+			t = 'Ⓑⓤⓢⓨ';
+			t2 = 'Busy';
+			break;
+			case 'sleeping':
+			t = 'Ⓢⓛⓔⓔⓟⓘⓝⓖ';
+			t2 = 'Sleeping';
+			break;
+			case 'sleep':
+			t = 'Ⓢⓛⓔⓔⓟⓘⓝⓖ';
+			t2 = 'Sleeping';
+			break;
+			case 'gaming':
+			t = 'Ⓖⓐⓜⓘⓝⓖ';
+			t2 = 'Gaming';
+			break;
+			case 'game':
+			t = 'Ⓖⓐⓜⓘⓝⓖ';
+			t2 = 'Gaming';
+			break;
+			case 'working':
+			t = 'Ⓦⓞⓡⓚⓘⓝⓖ';
+			t2 = 'Working';
+			break;
+			case 'work':
+			t = 'Ⓦⓞⓡⓚⓘⓝⓖ';
+			t2 = 'Working';
+			break;
+			case 'cri':
+			t = 'Ⓒⓡⓨⓘⓝⓖ';
+			t2 = 'Crying';
+			break;
+			case 'cry':
+			t = 'Ⓒⓡⓨⓘⓝⓖ';
+			t2 = 'Crying';
+			break;
+			case 'crie':
+			t = 'Ⓒⓡⓨⓘⓝⓖ';
+			t2 = 'Crying';
+			break;
+			case 'eating':
+			t = 'Ⓔⓐⓣⓘⓝⓖ';
+			t2 = 'Eating';
+			break;
+			case 'draw':
+			t = 'Ⓓⓡⓐⓦⓘⓝⓖ';
+			t2 = 'Drawing';
+			break;
+			case 'drawing':
+			t = 'Ⓓⓡⓐⓦⓘⓝⓖ';
+			t2 = 'Drawing';
+			break;
+			default:
+			t = 'Ⓐⓦⓐⓨ';
+			t2 = 'Away';
+			break;
+		}
+
+		if (user.name.length > 18) return this.sendReply('Your username exceeds the length limit.');
+
+		if (!user.isAway) {
+			user.originalName = user.name;
+			var awayName = user.name + ' - '+t;
+			//delete the user object with the new name in case it exists - if it does it can cause issues with forceRename
+			Users.get(awayName).destroy();
+			user.forceRename(awayName, undefined, true);
+
+			if (user.isStaff) this.add('|raw|-- <b><font color="#088cc7">' + user.originalName +'</font color></b> is now '+t2.toLowerCase()+'. '+ (target ? " (" + Tools.escapeHTML(target) + ")" : ""));
+
+			user.isAway = true;
+		}
+		else {
+			return this.sendReply('You are already set as a form of away, type /back if you are now back.');
+		}
+
+		user.updateIdentity();
+	},
+
+	back: function (target, room, user, connection) {
+		if (!this.can('away')) return false;
+
+		if (user.isAway) {
+			if (user.name === user.originalName) {
+				user.isAway = false;
+				return this.sendReply('Your name has been left unaltered and no longer marked as away.');
+			}
+
+			var newName = user.originalName;
+
+			//delete the user object with the new name in case it exists - if it does it can cause issues with forceRename
+			Users.get(newName).destroy();
+
+			user.forceRename(newName, undefined, true);
+
+			//user will be authenticated
+			user.authenticated = true;
+
+			if (user.isStaff) this.add('|raw|-- <b><font color="#088cc7">' + newName + '</font color></b> is no longer away.');
+
+			user.originalName = '';
+			user.isAway = false;
+		}
+		else {
+			return this.sendReply('You are not set as away.');
+		}
+
+		user.updateIdentity();
+	},
+		
 	/*********************************************************
 	* CUSTOM CODE STOPS HERE!
+	*********************************************************/
+	
+	/*********************************************************
+	* TC'S HERE!
+	*********************************************************/
+	
+	/*********************************************************
+	* TC'S STOP HERE!
 	*********************************************************/
 	
 	/*********************************************************
