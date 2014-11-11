@@ -235,7 +235,16 @@ var commands = exports.commands = {
 	/*********************************************************
 	* CUSTOM CODE HERE!
 	*********************************************************/
-		
+	tpoll: 'tiervote',
+	tierpoll: 'tiervote',
+	tiervote: function(target, room, user){
+		return this.parse('/poll Next Tournament Tier?, 1v1, randbats, rand mono, challenge cup, cc1v1, 1v1, ou, monotype, uu, ru, nu, pu, lc, cap, ubers, doubles, triples, perserverance, balanced hackmons, inverse, sky battles, stabmons, middle cup, metronome');
+	},
+	hv: 'helpvotes',
+        helpvotes: function(room, user, cmd){
+                return this.parse('/wall Remember to **vote** even if you don\'t want to battle; that way you\'re still voting for what tier battles you want to watch!');
+        },
+	
 	eating: 'away',
 	gaming: 'away',
 	game: 'away',

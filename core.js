@@ -112,7 +112,7 @@ var core = exports.core = {
 
             if (online === true) {
                 if (user.connected === true) {
-                    return '<br>&nbsp;<strong><font color="' + this.color + '">Last Seen:</font></strong>&nbsp;<font color="green">Current Online</font>';
+                    return '<br>&nbsp;<strong><font color="' + this.color + '">Last Seen:</font></strong>&nbsp;<font color="green">Currently Online</font>';
                 }
                 lastSeen = Number(Core.stdin('lastSeen', user.userid));
             } else {
@@ -382,7 +382,7 @@ var core = exports.core = {
     },
 
     tournaments: {
-        tourSize: 8,
+        tourSize: 2,
         amountEarn: 10,
         winningElo: 50,
         runnerUpElo: 25,
