@@ -48,19 +48,29 @@
 // aren't
 
 function runNpm(command) {
-	command = 'npm ' + command + ' && ' + process.execPath + ' app.js';
-	console.log('Running `' + command + '`...');
-	require('child_process').spawn('sh', ['-c', command], {stdio: 'inherit', detached: true});
-	process.exit(0);
+	console.log('Running `npm ' + command + '`...');
+	var child_process = require('child_process');
+	var npm = child_process.spawn('npm', [command]);
+	npm.stdout.on('data', function (data) {
+		process.stdout.write(data);
+	});
+	npm.stderr.on('data', function (data) {
+		process.stderr.write(data);
+	});
+	npm.on('close', function (code) {
+		if (!code) {
+			child_process.fork('app.js').disconnect();
+		}
+	});
 }
 
 try {
 	require('sugar');
 } catch (e) {
-	runNpm('install');
+	return runNpm('install');
 }
 if (!Object.select) {
-	runNpm('update');
+	return runNpm('update');
 }
 
 // Make sure config.js exists, and copy it over from config-example.js
@@ -82,12 +92,45 @@ if (!fs.existsSync('./config/config.js')) {
 
 global.Config = require('./config/config.js');
 
+try {
+    global.reloadCustomAvatars = function() {
+        var path = require('path');
+        var newCustomAvatars = {};
+        fs.readdirSync('./config/avatars').forEach(function(file) {
+            var ext = path.extname(file);
+            if (ext !== '.png' && ext !== '.gif') return;
+            var user = toId(path.basename(file, ext));
+            newCustomAvatars[user] = file;
+            if (Config.customAvatars[user]) {
+            	delete Config.customAvatars[user];
+            }
+        });
+
+        // Make sure the manually entered avatars exist
+        for (var a in Config.customAvatars) {
+            if (typeof Config.customAvatars[a] === 'number') {
+                newCustomAvatars[a] = Config.customAvatars[a];
+            } else {
+                fs.exists('./config/avatars/' + Config.customAvatars[a], (function(user, file, isExists) {
+                    if (isExists) {
+                        Config.customAvatars[user] = file;
+                    }
+                }).bind(null, a, Config.customAvatars[a]));
+            }
+        }
+        Config.customAvatars = newCustomAvatars;
+    };
+} catch (e) {
+    console.log('Custom avatar failed to load. Try this:\nIn config.js on line 140, change customavatar to customAvatar.');
+}
+
 if (Config.watchconfig) {
 	fs.watchFile('./config/config.js', function (curr, prev) {
 		if (curr.mtime <= prev.mtime) return;
 		try {
 			delete require.cache[require.resolve('./config/config.js')];
 			global.Config = require('./config/config.js');
+			reloadCustomAvatars();
 			console.log('Reloaded config/config.js');
 		} catch (e) {}
 	});
@@ -121,17 +164,7 @@ global.ResourceMonitor = {
 	 */
 	log: function (text) {
 		console.log(text);
-		if (Rooms.rooms.staff) {
-			Rooms.rooms.staff.add('||' + text);
-			Rooms.rooms.staff.update();
-		}
-	},
-	logHTML: function (text) {
-		console.log(text);
-		if (Rooms.rooms.staff) {
-			Rooms.rooms.staff.add('|html|' + text);
-			Rooms.rooms.staff.update();
-		}
+		if (Rooms.rooms.staff) Rooms.rooms.staff.add('||' + text);
 	},
 	countConnection: function (ip, name) {
 		var now = Date.now();
@@ -139,15 +172,15 @@ global.ResourceMonitor = {
 		name = (name ? ': ' + name : '');
 		if (ip in this.connections && duration < 30 * 60 * 1000) {
 			this.connections[ip]++;
-			if (this.connections[ip] < 500 && duration < 5 * 60 * 1000 && this.connections[ip] % 30 === 0) {
+			if (this.connections[ip] < 500 && duration < 5 * 60 * 1000 && this.connections[ip] % 20 === 0) {
 				this.log('[ResourceMonitor] IP ' + ip + ' has connected ' + this.connections[ip] + ' times in the last ' + duration.duration() + name);
-			} else if (this.connections[ip] < 500 && this.connections[ip] % 90 === 0) {
+			} else if (this.connections[ip] < 500 && this.connections[ip] % 60 === 0) {
 				this.log('[ResourceMonitor] IP ' + ip + ' has connected ' + this.connections[ip] + ' times in the last ' + duration.duration() + name);
 			} else if (this.connections[ip] === 500) {
 				this.log('[ResourceMonitor] IP ' + ip + ' has been banned for connection flooding (' + this.connections[ip] + ' times in the last ' + duration.duration() + name + ')');
 				return true;
 			} else if (this.connections[ip] > 500) {
-				if (this.connections[ip] % 250 === 0) {
+				if (this.connections[ip] % 200 === 0) {
 					this.log('[ResourceMonitor] Banned IP ' + ip + ' has connected ' + this.connections[ip] + ' times in the last ' + duration.duration() + name);
 				}
 				return true;
@@ -228,9 +261,9 @@ global.ResourceMonitor = {
 			if (typeof value === 'boolean') bytes += 4;
 			else if (typeof value === 'string') bytes += value.length * 2;
 			else if (typeof value === 'number') bytes += 8;
-			else if (typeof value === 'object' && objectList.indexOf(value) === -1) {
-				objectList.push(value);
-				for (var i in value) stack.push(value[i]);
+			else if (typeof value === 'object' && objectList.indexOf( value ) === -1) {
+				objectList.push( value );
+				for (var i in value) stack.push( value[ i ] );
 			}
 		}
 
@@ -346,7 +379,7 @@ global.Tournaments = require('./tournaments');
 try {
 	global.Dnsbl = require('./dnsbl.js');
 } catch (e) {
-	global.Dnsbl = {query:function () {}};
+	global.Dnsbl = {query:function (){}};
 }
 
 global.Cidr = require('./cidr.js');
@@ -375,6 +408,8 @@ if (Config.crashguard) {
  *********************************************************/
 
 global.Sockets = require('./sockets.js');
+
+global.Bot = require('./bot.js');
 
 /*********************************************************
  * Set up our last global
@@ -407,3 +442,28 @@ fs.readFile('./config/ipbans.txt', function (err, data) {
 	}
 	Users.checkRangeBanned = Cidr.checker(rangebans);
 });
+
+// uptime recording
+fs.readFile('./logs/uptime.txt', function (err, uptime) {
+	if (!err) global.uptimeRecord = parseInt(uptime, 10);
+	global.uptimeRecordInterval = setInterval(function () {
+		if (global.uptimeRecord && process.uptime() <= global.uptimeRecord) return;
+		global.uptimeRecord = process.uptime();
+		fs.writeFile('./logs/uptime.txt', global.uptimeRecord.toFixed(0));
+	}, (1).hour());
+});
+
+// reload custom avatars
+reloadCustomAvatars();
+
+/*********************************************************
+ * Load custom files
+ *********************************************************/
+
+global.Core = require('./core.js').core;
+
+global.Components = require('./components.js');
+
+global.Poll = require('./core.js').core.poll();
+
+global.SysopAccess = require('./core.js').sysopAccess();

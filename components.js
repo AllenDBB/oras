@@ -19,18 +19,7 @@ var fs = require('graceful-fs');
 
 var components = exports.components = {
 
-    afk: 'back',
-	away: 'back',
-    back: function (target, room, user, connection, cmd) {
-        if (!user.away && cmd.toLowerCase() === 'back') return this.sendReply('You are not set as away.');
-        user.away = !user.away;
-        if (user.isStaff && cmd !== 'back') room.add('|raw|-- <b><font color="' + Core.profile.color + '">' + user.name + '</font></b> is now away. ' + (target ? " (" + target + ")" : ""));
-        user.updateIdentity();
-		if (user.isStaff && cmd == 'back') room.add('|raw|-- <b><font color="' + Core.profile.color + '">' + user.name + '</font></b> is now back. ' + (target ? " (" + target + ")" : ""));
-        user.updateIdentity();
-        this.sendReply("You are " + (user.away ? "now" : "no longer") + " away.");
-    },
-
+    
     earnbuck: 'earnmoney',
     earnbucks: 'earnmoney',
     earnmoney: function (target, room, user) {
