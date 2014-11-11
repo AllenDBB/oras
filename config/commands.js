@@ -235,6 +235,7 @@ var commands = exports.commands = {
 	/*********************************************************
 	* CUSTOM CODE HERE!
 	*********************************************************/
+	
 	clearall: function (target, room, user) {
         if (!this.can('clearall')) return;
         if (room.battle) return this.sendReply('You cannot do it on battle rooms.');
@@ -452,7 +453,10 @@ var commands = exports.commands = {
 
 		user.updateIdentity();
 	},
-
+	
+	
+	ack: 'back',
+	bac: 'back',
 	back: function (target, room, user, connection) {
 		if (!this.can('away')) return false;
 
