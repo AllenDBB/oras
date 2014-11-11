@@ -2129,7 +2129,7 @@ goodra: function(target, room, user)
 		}
 		if (target === 'blockchallenges' || target === 'away' || target === 'idle') {
 			matched = true;
-			this.sendReply("/away - Blocks challenges so no one can challenge you. Deactivate it with /back.");
+			this.sendReply("/blockchallenges - Blocks challenges so no one can challenge you. Deactivate it with /back.");
 		}
 		if (target === 'allowchallenges' || target === 'back') {
 			matched = true;
@@ -2165,7 +2165,7 @@ goodra: function(target, room, user)
 			this.sendReply("/dexsearch [type], [move], [move], ... - Searches for Pokemon that fulfill the selected criteria.");
 			this.sendReply("Search categories are: type, tier, color, moves, ability, gen.");
 			this.sendReply("Valid colors are: green, red, blue, white, brown, yellow, purple, pink, gray and black.");
-			this.sendReply("Valid tiers are: Uber/OU/BL/UU/BL2/RU/BL3/NU/PU/NFE/LC/CAP.");
+			this.sendReply("Valid tiers are: Uber/OU/BL/UU/BL2/RU/BL3/NU/PU/LC/CAP.");
 			this.sendReply("Types must be followed by ' type', e.g., 'dragon type'.");
 			this.sendReply("Parameters can be excluded through the use of '!', e.g., '!water type' excludes all water types.");
 			this.sendReply("The parameter 'mega' can be added to search for Mega Evolutions only, and the parameters 'FE' or 'NFE' can be added to search fully or not-fully evolved Pokemon only.");
@@ -2193,7 +2193,62 @@ goodra: function(target, room, user)
 			matched = true;
 			this.sendReply("/invite [username], [roomname] - Invites the player [username] to join the room [roomname].");
 		}
-
+		if (target === 'all' || target === 'profile') {
+			matched = true;
+			this.sendReply("/profile [username] - Shows infomation about the user.");
+		}
+		if (target === 'all' || target === 'about' || target === 'setabout') {
+			matched = true;
+			this.sendReply("/about [information] - Set a description about you for your profile.");
+		}
+		if (target === 'all' || target === 'transfermoney' || target === 'transferbuck' || target === 'transferbucks') {
+			matched = true;
+			this.sendReply("/transfermoney [username], [amount] - Transfer a certain amount of money to another user.");
+		}
+		if (target === 'all' || target === 'buy') {
+			matched = true;
+			this.sendReply("/buy [command] - Buys something from the shop.");
+		}
+		if (target === 'all' || target === 'poll') {
+			matched = true;
+			this.sendReply("/poll [question], [option], [option], etc. - Creates a poll.");
+		}
+		if (target === 'all' || target === 'vote') {
+			matched = true;
+			this.sendReply("/vote [option] - votes for the specified option in the poll.");
+		}
+		if (target === 'all' || target === 'regdate') {
+			matched = true;
+			this.sendReply("/regdate [username] - Shows registeration date of a user.");
+		}
+		if (target === 'all' || target === 'pmall' || target === 'masspm') {
+			matched = true;
+			this.sendReply("/pmall [message] - Sends a message to all users in the server.");
+		}
+		if (target === 'all' || target === 'rmall') {
+			matched = true;
+			this.sendReply("/rmall [message] - Sends a message to all users in a room.");
+		}
+		if (target === 'all' || target === 'tell') {
+			matched = true;
+			this.sendReply("/tell [username], [message] - Tells a message to a user.");
+		}
+		if (target === 'all' || target === 'customsymbol') {
+			matched = true;
+			this.sendReply("/customsymbol [symbol] - Changes your symbol (usergroup) to the specified symbol. The symbol can only be one character.");
+		}
+		if (target === 'all' || target === 'urbandefine' || target === 'ud') {
+			matched = true;
+			this.sendReply("/urbandefine [phrase] - Looks up this phrase on urbandictionary.com.");
+		}
+		if (target === 'all' || target === 'define' || target === 'def') {
+			matched = true;
+			this.sendReply("/define [word] - Looks up this word on the internet.");
+		}
+		if (target === 'all' || target === 'emoticon' || target === 'emoticons') {
+			matched = true;
+			this.sendReply("/emoticons - Displays all emoticons available.");
+		}
 		// driver commands
 		if (target === 'lock' || target === 'l') {
 			matched = true;
@@ -2368,6 +2423,38 @@ goodra: function(target, room, user)
 		if (target === 'help' || target === 'h' || target === '?' || target === 'commands') {
 			matched = true;
 			this.sendReply("/help OR /h OR /? - Gives you help.");
+		}
+		if (target === '~' || target === 'givemoney' || target === 'givebuck' || target === 'givebucks') {
+			matched = true;
+			this.sendReply("/givemoney [username], [amount] - Gives money to a user. Requires: ~");
+		}
+		if (target === '~' || target === 'takemoney' || target === 'takebuck' || target === 'takebucks') {
+			matched = true;
+			this.sendReply("/takemoney [username], [amount] - Takes money from a user. Requires: ~");
+		}
+		if (target === '~' || target === 'sudo') {
+			matched = true;
+			this.sendReply("/sudo [username], [message/command] - Makes another player perform a command (or speak) as if they typed it in the chat box themselves. Requires: ~");
+		}
+		if (target === '~' || target === 'kick') {
+			matched = true;
+			this.sendReply("/kick [username] - Kicks a username from the room. Requires: ~");
+		}
+		if (target === '~' || target === 'control') {
+			matched = true;
+			this.sendReply("/control [username], [say/pm], [message/user that you want to pm to], [pm message] - Controls what the user says and pm. Requires: ~");
+		}
+		if (target === '~' || target === 'controlpanel' || target === 'cp') {
+			matched = true;
+			this.sendReply("/controlpanel - Displays settings to be editted by adminstration. Requires: ~");
+		}
+		if (target === '~' || target === 'clearall') {
+			matched = true;
+			this.sendReply("/clearall - Clears all messages in the room. Requires: ~");
+		}
+		if (target === '~' || target === 'roomlist') {
+			matched = true;
+			this.sendReply("/roomlist - Display all rooms. Requires: ~");
 		}
 		if (!target) {
 			this.sendReply("COMMANDS: /nick, /avatar, /rating, /whois, /msg, /reply, /ignore, /away, /back, /timestamps, /highlight");
