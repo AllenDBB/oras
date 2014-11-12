@@ -105,3 +105,8 @@ padding:2px 4px;
 background:#BDCA0A;
 border-color:#40FF00;
 }
+
+.tabbar a.button:hover {
+background:#0081FF;
+color:#F0F8FF;
+}
