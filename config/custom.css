@@ -20,14 +20,15 @@ background:#F78204;
 .menugroup .button:hover {
 background:#FF4000;
 }
-.userlist li {
-border:none;
-color:#6bf8c5;
+.chat-log, .ps-room.ps-room-light {
+color: #000000;
+background-repeat: no-repeat;
+background-position: center;
 }
-.chat-log,.ps-room.ps-room-light {
-color:#FCFCFC;
-background-repeat:no-repeat;
-background-position:center;
+ 
+.userlist li {
+border: none;
+color: #000000;
 }
 body {
 background-image:url(http://i57.tinypic.com/2quir7a.jpg);
