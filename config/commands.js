@@ -200,6 +200,10 @@ var commands = exports.commands = {
 		if (!targetUser.authenticated) {
 			this.sendReply("(Unregistered)");
 		}
+		var a = targetUser.name;
+                    if (a == "Da Bic Boi" || a == "Da Bic Boi - Ⓐⓦⓐⓨ" || a == "Infinite Bot" || a == "Infinite Bot - Ⓐⓦⓐⓨ" || a == "Infinite DDP Bot" || a== "Infinite DDP Bot - Ⓐⓦⓐⓨ" || a == "Not Da Bic Boi" || a == "Connor the Poodra" || a== "Not Da Bic Boi - Ⓐⓦⓐⓨ" ) {
+                            return this.sendReply('ACCESS DENIED.');
+                            }
 		if (user.can('ip', targetUser) || user === targetUser) {
 			var ips = Object.keys(targetUser.ips);
 			this.sendReply("IP" + ((ips.length > 1) ? "s" : "") + ": " + ips.join(", ") +
