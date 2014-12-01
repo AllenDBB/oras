@@ -684,7 +684,7 @@ var commands = exports.commands = {
 	ellen: function(target, room, user) {
                     if(!this.canBroadcast()) return;
                     this.sendReplyBox('<center><img src="http://107.161.19.92:8000/TCs/ellen.jpg"><br /><br />' +
-									  '<img src="http://107.161.19.92:8000/TCs/ellen.jpg"><br /><br />' +
+									  '<img src="http://107.161.19.92:8000/TCs/ellen2.jpg"><br /><br />' +
 									  ' People who have purchsed her: ')
             },
 	
