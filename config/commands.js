@@ -680,6 +680,14 @@ var commands = exports.commands = {
 									  '<img src="http://107.161.19.92:8000/TCs/lizbith4.jpg"><br /><br />' +
 									  '<img src="http://107.161.19.92:8000/TCs/lizbith5.jpg"><br /><br />')
             },
+	taco: 'ellen',
+	ellen: function(target, room, user) {
+                    if(!this.canBroadcast()) return;
+                    this.sendReplyBox('<center><img src="http://107.161.19.92:8000/TCs/ellen.jpg"><br /><br />' +
+									  '<img src="http://107.161.19.92:8000/TCs/ellen.jpg"><br /><br />' +
+									  ' People who have purchsed her: ')
+            },
+	
 
 	korps: function(target, room, user) {
                     if(!this.canBroadcast()) return;

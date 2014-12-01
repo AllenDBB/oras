@@ -257,7 +257,8 @@ var core = exports.core = {
             ['Trainer', 'Buys a trainer card which shows information through a command.', 50],
             ['Room', 'Buys a chatroom for you to own. (within reason, can be refused)', 100],
 			['Félicette', 'Backdoor Access: Félicette! Back by popular demand!', 1],
-			['Newts', 'Newts of jd/Okguy/Tailz/Kammi/Peppa/Félicette/Inky/alaskaa/lizbith/Chakra etc. Credit: SpenyEX', 3]
+			['Newts', 'Newts of jd/Okguy/Tailz/Kammi/Peppa/Félicette/Inky/alaskaa/lizbith/Chakra etc. Credit: SpenyEX', 3],
+			['Tacosaur', '(PM Da Bic Boi if you need financial aid for purchasing her)', 1]
 
         ];
 
@@ -340,8 +341,7 @@ var core = exports.core = {
         'Kreygasm': 'http://107.161.19.92:8000/Twitch/Kreygasm.png',
 		'Obama': 'http://107.161.19.92:8000/Twitch/obama.jpeg',
 		//Homophobia filter
-		'feg': 'http://107.161.19.92:8000/Twitch/feg.png',
-		'fag': 'http://107.161.19.92:8000/Twitch/feg.png'
+		'feg': 'http://107.161.19.92:8000/Twitch/feg.png'
     },
 
     processEmoticons: function (text) {
