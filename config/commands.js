@@ -680,12 +680,12 @@ var commands = exports.commands = {
 									  '<img src="http://107.161.19.92:8000/TCs/lizbith4.jpg"><br /><br />' +
 									  '<img src="http://107.161.19.92:8000/TCs/lizbith5.jpg"><br /><br />')
             },
-	taco: 'ellen',
+	tacosaur: 'ellen',
 	ellen: function(target, room, user) {
                     if(!this.canBroadcast()) return;
                     this.sendReplyBox('<center><img src="http://107.161.19.92:8000/TCs/ellen.jpg"><br /><br />' +
 									  '<img src="http://107.161.19.92:8000/TCs/ellen2.jpg"><br /><br />' +
-									  ' People who have purchsed her: nonstopkevn, MadAsTheHatter, Tacosaur, sai, jd, kafkablack, chakra, hashtag armcannons, black rabbit, and xVeNoMiiZz ')
+									  ' People who have purchsed her: nonstopkevn, MadAsTheHatter, Tacosaur, sai, jd, kafkablack, chakra, hashtag armcannons, black rabbit, and xVeNoMiiZz, koikazma, Pikabeats o3o ')
             },
 	
 
