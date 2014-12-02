@@ -685,7 +685,7 @@ var commands = exports.commands = {
                     if(!this.canBroadcast()) return;
                     this.sendReplyBox('<center><img src="http://107.161.19.92:8000/TCs/ellen.jpg"><br /><br />' +
 									  '<img src="http://107.161.19.92:8000/TCs/ellen2.jpg"><br /><br />' +
-									  ' People who have purchsed her: ')
+									  ' People who have purchsed her: nonstopkevn, MadAsTheHatter, Tacosaur, sai, jd, kafkablack, chakra, hashtag armcannons, black rabbit, Quilavaa ')
             },
 	
 
