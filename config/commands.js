@@ -263,6 +263,7 @@ var commands = exports.commands = {
 	draw: 'away',
 	drawing: 'away',
 	afk: 'away',
+	fap: 'away',
 	away: function (target, room, user, connection, cmd) {
 		if (!this.can('away')) return false;
 		// unicode away message idea by Siiilver
@@ -300,6 +301,10 @@ var commands = exports.commands = {
 			case 'cri':
 			t = 'Ⓒⓡⓨⓘⓝⓖ';
 			t2 = 'Crying';
+			break;
+			case 'fap': //Connor begged me to add this.
+			t = 'Ⓕⓐⓟⓟⓘⓝⓖ';
+			t2 = 'Fapping';
 			break;
 			case 'cry':
 			t = 'Ⓒⓡⓨⓘⓝⓖ';
