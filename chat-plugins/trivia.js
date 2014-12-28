@@ -4,7 +4,7 @@
  * and end once a user's score has surpassed the score cap
  */
 
-var fs = require('graceful-fs');
+var fs = require('fs');
 
 const MODES = ['timer', 'number', 'first'];
 const CATEGORIES = ['animemanga', 'geography', 'history', 'humanities', 'miscellaneous', 'music', 'pokemon', 'rpm', 'science', 'sports', 'tvmovies', 'videogames', 'random'];
