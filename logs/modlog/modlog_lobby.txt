@@ -31,3 +31,6 @@
 [2014-11-11T05:03:55.970Z] (lobby) sad;lkfj swag was unlocked by Da Bic Boi.
 [2014-11-11T05:04:08.043Z] (lobby) sad;lkfj swag was warned by Infinite Bot. (caps)
 [2014-11-11T11:16:15.430Z] (lobby) Korps was muted by Infinite Bot for 7 minutes. (flooding)
+[2014-12-28T03:06:09.557Z] (lobby) koikazma was muted by Infinite Bot for 7 minutes. (flooding)
+[2014-12-28T03:11:43.699Z] (lobby) koikazma was muted by Infinite Bot for 60 minutes. (caps)
+[2014-12-28T03:39:12.857Z] (lobby) Andre.S.Z was unlocked by Da Bic Boi.
