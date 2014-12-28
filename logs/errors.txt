@@ -1,0 +1,423 @@
+
+ReferenceError: Core is not defined
+    at Object.exports.commands.back (C:\Users\Allen\Documents\GitHub\oras\config\commands.js:243:83)
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+    at Worker.emit (events.js:98:17)
+    at ChildProcess.emit (events.js:98:17)
+    at handleMessage (child_process.js:322:10)
+    at Pipe.channel.onread (child_process.js:349:11)
+
+Additional information:
+user = Da Bic Boi
+room = lobby
+message = /afk
+
+ReferenceError: Core is not defined
+    at Object.exports.commands.back (C:\Users\Allen\Documents\GitHub\oras\config\commands.js:353:83)
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+    at Worker.emit (events.js:98:17)
+    at ChildProcess.emit (events.js:98:17)
+    at handleMessage (child_process.js:322:10)
+    at Pipe.channel.onread (child_process.js:349:11)
+
+Additional information:
+user = Da Bic Boi
+room = lobby
+message = /afk
+
+ReferenceError: escapeHTML is not defined
+    at Object.exports.commands.away (C:\Users\Allen\Documents\GitHub\oras\config\commands.js:413:156)
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+    at Worker.emit (events.js:98:17)
+    at ChildProcess.emit (events.js:98:17)
+    at handleMessage (child_process.js:322:10)
+    at Pipe.channel.onread (child_process.js:349:11)
+
+Additional information:
+user = Da Bic Boi - Ⓐⓦⓐⓨ
+room = lobby
+message = /afk t2
+
+ReferenceError: escapeHTML is not defined
+    at Object.exports.commands.away (C:\Users\Allen\Documents\GitHub\oras\config\commands.js:413:156)
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+    at Worker.emit (events.js:98:17)
+    at ChildProcess.emit (events.js:98:17)
+    at handleMessage (child_process.js:322:10)
+    at Pipe.channel.onread (child_process.js:349:11)
+
+Additional information:
+user = Da Bic Boi - Ⓐⓦⓐⓨ
+room = lobby
+message = /afk a
+
+TypeError: Cannot call method 'destroy' of undefined
+    at Object.exports.commands.away (C:\Users\Allen\Documents\GitHub\oras\config\commands.js:410:24)
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+    at Worker.emit (events.js:98:17)
+    at ChildProcess.emit (events.js:98:17)
+    at handleMessage (child_process.js:322:10)
+    at Pipe.channel.onread (child_process.js:349:11)
+
+Additional information:
+user = Da Bic Boi
+room = lobby
+message = /afk
+
+TypeError: Cannot call method 'destroy' of undefined
+    at Object.exports.commands.away (C:\Users\Allen\Documents\GitHub\oras\config\commands.js:410:24)
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+    at Worker.emit (events.js:98:17)
+    at ChildProcess.emit (events.js:98:17)
+    at handleMessage (child_process.js:322:10)
+    at Pipe.channel.onread (child_process.js:349:11)
+
+Additional information:
+user = Da Bic Boi
+room = lobby
+message = /afk
+
+TypeError: Cannot call method 'destroy' of undefined
+    at Object.exports.commands.away (C:\Users\Allen\Documents\GitHub\oras\config\commands.js:410:24)
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+    at Worker.emit (events.js:98:17)
+    at ChildProcess.emit (events.js:98:17)
+    at handleMessage (child_process.js:322:10)
+    at Pipe.channel.onread (child_process.js:349:11)
+
+Additional information:
+user = Da Bic Boi
+room = lobby
+message = /afk
+
+TypeError: Object away has no method 'call'
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+    at Worker.emit (events.js:98:17)
+    at ChildProcess.emit (events.js:98:17)
+    at handleMessage (child_process.js:322:10)
+    at Pipe.channel.onread (child_process.js:349:11)
+
+Additional information:
+user = Da Bic Boi
+room = lobby
+message = /drawing
+
+TypeError: Object away has no method 'call'
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+    at Worker.emit (events.js:98:17)
+    at ChildProcess.emit (events.js:98:17)
+    at handleMessage (child_process.js:322:10)
+    at Pipe.channel.onread (child_process.js:349:11)
+
+Additional information:
+user = Azure Shock - Ⓐⓦⓐⓨ
+room = lobby
+message = /drawing
+
+TypeError: Object away has no method 'call'
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+    at Worker.emit (events.js:98:17)
+    at ChildProcess.emit (events.js:98:17)
+    at handleMessage (child_process.js:322:10)
+    at Pipe.channel.onread (child_process.js:349:11)
+
+Additional information:
+user = Azure Shock - Ⓐⓦⓐⓨ
+room = lobby
+message = /drawing
+
+TypeError: Object away has no method 'call'
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+    at Worker.emit (events.js:98:17)
+    at ChildProcess.emit (events.js:98:17)
+    at handleMessage (child_process.js:322:10)
+    at Pipe.channel.onread (child_process.js:349:11)
+
+Additional information:
+user = Azure Shock - Ⓐⓦⓐⓨ
+room = lobby
+message = /drawing
+
+TypeError: Object away has no method 'call'
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.processChatQueue (C:\Users\Allen\Documents\GitHub\oras\users.js:1526:13)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+Additional information:
+user = Azure Shock - Ⓐⓦⓐⓨ
+room = lobby
+message = /drawing
+
+TypeError: Object away has no method 'call'
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.processChatQueue (C:\Users\Allen\Documents\GitHub\oras\users.js:1526:13)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+Additional information:
+user = Azure Shock - Ⓐⓦⓐⓨ
+room = lobby
+message = /drawing
+
+TypeError: Object away has no method 'call'
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.processChatQueue (C:\Users\Allen\Documents\GitHub\oras\users.js:1526:13)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+Additional information:
+user = Azure Shock - Ⓐⓦⓐⓨ
+room = lobby
+message = /drawing
+
+TypeError: Object #<Object> has no method 'call'
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+    at Worker.emit (events.js:98:17)
+    at ChildProcess.emit (events.js:98:17)
+    at handleMessage (child_process.js:322:10)
+    at Pipe.channel.onread (child_process.js:349:11)
+
+Additional information:
+user = Da Bic Boi
+room = lobby
+message = /emoticons
+
+ReferenceError: Core is not defined
+    at Object.exports.commands.emoticon (C:\Users\Allen\Documents\GitHub\oras\config\commands.js:243:32)
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+    at Worker.emit (events.js:98:17)
+    at ChildProcess.emit (events.js:98:17)
+    at handleMessage (child_process.js:322:10)
+    at Pipe.channel.onread (child_process.js:349:11)
+
+Additional information:
+user = Da Bic Boi
+room = lobby
+message = /emoticons
+
+TypeError: Cannot call method on undefined
+    at Object.ES.CheckObjectCoercible (C:\Users\Allen\Documents\GitHub\oras\node_modules\es6-shim\es6-shim.js:152:17)
+    at Object.ES.ToObject (C:\Users\Allen\Documents\GitHub\oras\node_modules\es6-shim\es6-shim.js:164:26)
+    at Function.Object.keys (C:\Users\Allen\Documents\GitHub\oras\node_modules\es6-shim\es6-shim.js:905:38)
+    at Object.exports.commands.emoticon (C:\Users\Allen\Documents\GitHub\oras\config\commands.js:243:27)
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+    at Worker.emit (events.js:98:17)
+
+Additional information:
+user = Da Bic Boi
+room = lobby
+message = /emoticons
+
+TypeError: Object #<Object> has no method 'call'
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+    at Worker.emit (events.js:98:17)
+    at ChildProcess.emit (events.js:98:17)
+    at handleMessage (child_process.js:322:10)
+    at Pipe.channel.onread (child_process.js:349:11)
+
+Additional information:
+user = Da Bic Boi
+room = lobby
+message = /emoticons
+
+Error: Cannot find module './bot.js'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\app.js:412:14)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Function.Module.runMain (module.js:497:10)
+
+Error: Cannot find module './fake-process.js'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at joinServer (C:\Users\Allen\Documents\GitHub\oras\bot.js:44:22)
+    at Object.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\bot.js:539:1)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+
+Error: Cannot find module './fake-process.js'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at joinServer (C:\Users\Allen\Documents\GitHub\oras\bot.js:44:22)
+    at Object.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\bot.js:539:1)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+
+Error: Cannot find module 'request'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\components.js:18:15)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+
+TypeError: Object back has no method 'call'
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+    at Worker.emit (events.js:98:17)
+    at ChildProcess.emit (events.js:98:17)
+    at handleMessage (child_process.js:322:10)
+    at Pipe.channel.onread (child_process.js:349:11)
+
+Additional information:
+user = Da Bic Boi
+room = lobby
+message = /game
+
+Error: ENOENT, no such file or directory 'C:\Users\Allen\Documents\GitHub\oras\config\money.csv'
+    at Object.fs.openSync (evalmachine.<anonymous>:438:18)
+    at Object.fs.readFileSync (evalmachine.<anonymous>:289:15)
+    at Object.exports.core.stdin (C:\Users\Allen\Documents\GitHub\oras\core.js:19:23)
+    at Object.exports.core.profile.money (C:\Users\Allen\Documents\GitHub\oras\core.js:161:25)
+    at Object.exports.components.profile (C:\Users\Allen\Documents\GitHub\oras\components.js:140:34)
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1510:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at Worker.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:45:11)
+
+Additional information:
+user = Da Bic Boi
+room = lobby
+message = /profile
+
+TypeError: Cannot read property 'infinitebot' of undefined
+    at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:537:1028)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+TypeError: Cannot read property 'infinitebot' of undefined
+    at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:537:1019)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+TypeError: Cannot read property 'infinitebot' of undefined
+    at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:537:1019)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+TypeError: Cannot read property 'infinitebot' of undefined
+    at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:585:34)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+TypeError: Cannot read property 'infinitebot' of undefined
+    at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:585:34)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+TypeError: Cannot read property 'infinitebot' of undefined
+    at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:537:1028)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+TypeError: Cannot read property 'infinitebot' of undefined
+    at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:594:34)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+TypeError: Cannot read property 'infinitebot' of undefined
+    at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:594:34)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+SyntaxError: Unexpected identifier
+    at Module._compile (module.js:439:25)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\app.js:412:14)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+
+TypeError: Cannot read property 'infinitebot' of undefined
+    at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:594:34)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+TypeError: Cannot read property 'infinitebot' of undefined
+    at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:594:34)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+TypeError: Cannot read property 'booty' of undefined
+    at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:594:34)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+TypeError: Cannot read property 'bootybot' of undefined
+    at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:537:1019)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)

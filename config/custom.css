@@ -1,111 +1,302 @@
 .chat-log-add {
-border-top:1px solid #151515;
-background:#151515;
+border-top:1px solid rgba(238,175,75,0.8);
+background:rgba(238,175,75,0.8);
 }
 
 .userlist {
-background:#080808 url(http://107.161.19.92:8000/CustomCss/Halloween/Userlist.png) no-repeat;
-border-right:1px solid #101010;
+background:rgba(238,175,75,0.8);
+border-right:1px solid rgba(238,175,75,0.8);
 }
 
-.ps-room{ border-left: 1px solid #545454; }
-
-.userlist li {
-border:none;
-color:#6bf8c5;
+.ps-room {
+border-left:1px solid;
 }
 
-.pm-log-add.focused {
-background-color:#00e1ff;
-border-color:#00e1ff;
-}
-
-.message-announce {
-background:#C4501A;
-border-color:#40FF00;
-}
-
-.broadcast-blue {
-background-color:#D27422;
-padding:2px 4px;
-}
-
-.pm-window.focused h3:hover,.pm-window.focused h3 {
-background-color:#D0721F;
-border-color:#000;
-}
-
-#header {
-background:url(http://107.161.19.92:8000/CustomCss/Halloween/TopHalloween.jpg);
-}
-
-body {
-background-image:url(http://107.161.19.92:8000/CustomCss/Halloween/Halloween.jpg);
+.chat-log,.ps-room.ps-room-light {
+color:#000;
 background-repeat:no-repeat;
 background-position:center;
 }
 
- .menugroup .button {
- background:#000;
- }
- 
- .menugroup .button:hover {
- background:#FF4000;
- }
-
-.chat-log,.ps-room.ps-room-light {
-background:#151515;
-color:#77D6B8;
+.menugroup .button {
+background:#F78204;
 }
 
-.pm-window h3,.pm-log-add {
-background-color:#151515;
-border-color:#151515;
+.menugroup .button:hover {
+background:#0081FF;
+}
+
+.userlist li {
+background:rgba(238,175,75,0.8);
+border-bottom:none;
+color:#000;
+}
+
+.userlist li button {
+background:rgba(238,175,75,0.8);
+}
+
+.userlist li button:hover {
+background:rgba(247,130,4,0.8);
+}
+
+body {
+background-image:url(http://i57.tinypic.com/2quir7a.jpg);
+background-repeat:no-repeat;
+background-position:center;
 }
 
 .highlighted {
-background-color:#58009C;
+background-color:#0081FF;
 }
-
-
-
 
 .utilichart .pokemonnamecol {
-padding-top: 5px;
-height: 23px;
-width: 115px;
-color: #77d6b8;
-font-size: 10pt;
+padding-top:5px;
+height:23px;
+width:115px;
+color:#0081FF;
+font-size:10pt;
 }
- 
+
 .utilichart .typecol img {
-opacity: 0.9;
-margin-right: 1px;
+margin-right:1px;
 }
- 
+
 .utilichart .col {
-float: left;
-padding-top: 6px;
-height: 22px;
-font-size: 9pt;
-color: #77d6b8;
-text-shadow: 1px 1px black;
+float:left;
+height:22px;
+font-size:9pt;
+color:#F78204;
 }
- 
+
 .utilichart .twoabilitycol {
-padding-top: 0;
-height: 28px;
-font-size: 8pt;
-width: 90px;
+padding-top:0;
+height:28px;
+font-size:8pt;
+width:90px;
 }
- 
+
 .utilichart .abilitycol {
-padding-top: 7px;
-height: 21px;
-font-size: 8pt;
-width: 90px;
+padding-top:7px;
+height:21px;
+font-size:8pt;
+width:90px;
 }
-.utilichart .labelcol em, .utilichart .widelabelcol em, .utilichart .pplabelcol em, .utilichart .statcol em, .utilichart .bstcol em {
-color: #77d6b8;
-font-size: 7pt;
-font-style: normal;
+
+.utilichart .labelcol em,.utilichart .widelabelcol em,.utilichart .pplabelcol em,.utilichart .statcol em,.utilichart .bstcol em {
+color:#0081FF;
+font-size:7pt;
+font-style:normal;
+}
+
+.pm-log-add {
+background:rgba(0,129,255,0.8);
+border-color:#000;
+}
+
+.pm-window h3 {
+background:rgba(0,129,255,0.8);
+color:#000;
+font-size:11pt;
+border:1px solid #000;
+margin:0;
+padding:2px 5px;
+}
+
+.pm-window h3:hover {
+background:rgba(247,130,4,0.8);
+color:#000;
+font-size:11pt;
+border:1px solid #000;
+margin:0;
+padding:2px 5px;
+}
+
+.pm-log-add:hover {
+background-color:rgba(247,130,4,0.8);
+border-color:#000;
+}
+
+.pm-log {
+background:rgba(242,247,250,0.85);
+color:#000;
+border:1px solid #000;
+border-top:0;
+border-bottom:0;
+overflow:auto;
+}
+
+.pm-window.focused h3 {
+background:rgba(255,255,255,0.5);
+color:#0081FF;
+text-shadow:1px 1px 0 #000;
+border:1px solid #0081FF;
+}
+
+.pm-window.focused h3:hover {
+background:rgba(0,0,0,0.5);
+color:#0081FF;
+text-shadow:none;
+border:1px solid #0081FF;
+}
+
+.message-pm {
+color:#0081FF;
+}
+
+.broadcast-blue {
+background-color:#660606;
+padding:2px 4px;
+}
+
+.message-announce {
+background:#BDCA0A;
+border-color:#40FF00;
+}
+
+.closebutton,.minimizebutton {
+text-decoration:none;
+font-size:14px;
+color:#FFF;
+text-shadow:none;
+border:0;
+background:transparent;
+margin:0;
+padding:0;
+}
+
+.closebutton:hover,.minimizebutton:hover {
+text-decoration:none;
+font-size:14px;
+color:#0081FF;
+text-shadow:none;
+border:none;
+background:transparent;
+}
+
+.tabbar a.button {
+display:inline-block;
+height:28px;
+text-align:center;
+text-decoration:none;
+text-shadow:0 1px 0;
+white-space:nowrap;
+color:#fff;
+border:solid 1px #0081FF;
+font-size:11px;
+margin:0 -1px 0 0;
+padding:3px 2px;
+}
+
+.tabbar a.button:hover {
+display:inline-block;
+height:28px;
+text-align:center;
+text-decoration:none;
+text-shadow:0 1px 0;
+white-space:nowrap;
+color:#000000;
+border:solid 1px #000;
+font-size:11px;
+margin:0 -1px 0 0;
+padding:3px 2px;
+}
+
+.tabbar a.button.cur:hover {
+color:#000000;
+text-shadow:1px 1px 0 #000;
+border-bottom:0;
+padding-top:3px;
+padding-bottom:5px;
+border-color:#000;
+}
+
+.tabbar a.button.cur {
+color:#000000;
+border-bottom:0;
+padding-top:3px;
+padding-bottom:5px;
+border-color:#0081FF;
+}
+
+.maintabbarbottom {
+display:block;
+height:6px;
+background:rgba(0,247,250,0.85);
+border:none;
+border-left:0;
+margin:-1px 0 0;
+}
+
+.mainmenufooter a {
+text-decoration:underline;
+color:#F78204;
+text-shadow:1px 1px 0 #0081ff;
+}
+
+.mainmenufooter a:hover {
+text-decoration:underline;
+color:rgba(0,0,0,0.8);
+}
+
+button {
+background-color:rgba(0,0,0,0.75);
+color:#fff;
+border:1px solid #0081FF;
+}
+
+button:hover {
+background-color:rgba(0,129,255,0.75);
+color:#fff;
+border:1px solid #000;
+}
+
+.select {
+background:rgba(220,220,220,0.65);
+color:#555;
+border-color:#999;
+}
+
+.select:hover {
+width:230px;
+height:32px;
+font-size:9pt;
+text-align:left;
+font-family:Verdana,Helvetica,Arial,sans-serif;
+border:1px solid #888;
+background:#0081FF;
+color:#fff;
+padding:0 5px;
+}
+
+.popupmenu button {
+display:block;
+font-size:8pt;
+font-family:Verdana,Helvetica,Arial,sans-serif;
+border:0;
+background:transparent;
+color:#000;
+width:204px;
+height:19px;
+text-align:left;
+margin:0 0 0 6px;
+padding:0 4px;
+}
+
+.popupmenu button:hover {
+display:block;
+font-size:8pt;
+font-family:Verdana,Helvetica,Arial,sans-serif;
+border:1px solid #888;
+background:rgba(125,125,125,0.2);
+color:#000;
+width:204px;
+height:19px;
+text-align:left;
+margin:0 0 0 6px;
+padding:0 4px;
+}
+
+.select.teamselect,.select.teamselect:hover {
+height:43px;
+}

@@ -14,6 +14,20 @@ require('sugar');
 
 global.Config = require('./config/config.js');
 
+if (Config.crashguard) {
+	// graceful crash - allow current battles to finish before restarting
+	process.on('uncaughtException', function (err) {
+		require('./crashlogger.js')(err, 'A simulator process');
+		/* var stack = ("" + err.stack).escapeHTML().split("\n").slice(0, 2).join("<br />");
+		if (Rooms.lobby) {
+			Rooms.lobby.addRaw('<div><b>THE SERVER HAS CRASHED:</b> ' + stack + '<br />Please restart the server.</div>');
+			Rooms.lobby.addRaw('<div>You will not be able to talk in the lobby or start new battles until the server restarts.</div>');
+		}
+		Config.modchat = 'crash';
+		Rooms.global.lockdown = true; */
+	});
+}
+
 /**
  * Converts anything to an ID. An ID must have only lowercase alphanumeric
  * characters.
@@ -58,7 +72,7 @@ var Battles = {};
 
 // Receive and process a message sent using Simulator.prototype.send in
 // another process.
-battleEngineFakeProcess.client.on('message', function (message) {
+process.on('message', function (message) {
 	//console.log('CHILD MESSAGE RECV: "' + message + '"');
 	var nlIndex = message.indexOf("\n");
 	var more = '';
@@ -79,9 +93,9 @@ battleEngineFakeProcess.client.on('message', function (message) {
 
 				if (!require('./crashlogger.js')(fakeErr, 'A battle')) {
 					var ministack = ("" + err.stack).escapeHTML().split("\n").slice(0, 2).join("<br />");
-					battleEngineFakeProcess.client.send(data[0] + '\nupdate\n|html|<div class="broadcast-red"><b>A BATTLE PROCESS HAS CRASHED:</b> ' + ministack + '</div>');
+					process.send(data[0] + '\nupdate\n|html|<div class="broadcast-red"><b>A BATTLE PROCESS HAS CRASHED:</b> ' + ministack + '</div>');
 				} else {
-					battleEngineFakeProcess.client.send(data[0] + '\nupdate\n|html|<div class="broadcast-red"><b>The battle crashed!</b><br />Don\'t worry, we\'re working on fixing it.</div>');
+					process.send(data[0] + '\nupdate\n|html|<div class="broadcast-red"><b>The battle crashed!</b><br />Don\'t worry, we\'re working on fixing it.</div>');
 				}
 			}
 		}
@@ -1434,10 +1448,12 @@ Battle = (function () {
 		this.messageLog = [];
 
 		// use a random initial seed (64-bit, [high -> low])
-		this.startingSeed = this.seed = [Math.floor(Math.random() * 0x10000),
+		this.startingSeed = this.seed = [
 			Math.floor(Math.random() * 0x10000),
 			Math.floor(Math.random() * 0x10000),
-			Math.floor(Math.random() * 0x10000)];
+			Math.floor(Math.random() * 0x10000),
+			Math.floor(Math.random() * 0x10000)
+		];
 	};
 
 	Battle.prototype.turn = 0;
@@ -1464,7 +1480,6 @@ Battle = (function () {
 	Battle.prototype.toString = function () {
 		return 'Battle: ' + this.format;
 	};
-
 
 	// This function is designed to emulate the on-cartridge PRNG for Gens 3 and 4, as described in
 	// http://www.smogon.com/ingame/rng/pid_iv_creation#pokemon_random_number_generator
@@ -2141,7 +2156,7 @@ Battle = (function () {
 			}
 			status = this.getFormat();
 			if (status[callbackType] !== undefined || (getAll && thing.formatData[getAll])) {
-				statuses.push({status: status, callback: status[callbackType], statusData: this.formatData, end: function (){}, thing: thing, priority: status[callbackType + 'Priority'] || 0});
+				statuses.push({status: status, callback: status[callbackType], statusData: this.formatData, end: function () {}, thing: thing, priority: status[callbackType + 'Priority'] || 0});
 				this.resolveLastPriority(statuses, callbackType);
 			}
 			if (bubbleDown) {
@@ -2201,7 +2216,7 @@ Battle = (function () {
 		}
 		status = this.getEffect(thing.template.baseSpecies);
 		if (status[callbackType] !== undefined) {
-			statuses.push({status: status, callback: status[callbackType], statusData: thing.speciesData, end: function (){}, thing: thing});
+			statuses.push({status: status, callback: status[callbackType], statusData: thing.speciesData, end: function () {}, thing: thing});
 			this.resolveLastPriority(statuses, callbackType);
 		}
 
@@ -2276,7 +2291,7 @@ Battle = (function () {
 		case 'switch':
 			var switchTable = [];
 			var active;
-			for (var i=0, l=this.p1.active.length; i<l; i++) {
+			for (var i = 0, l = this.p1.active.length; i < l; i++) {
 				active = this.p1.active[i];
 				switchTable.push(!!(active && active.switchFlag));
 			}
@@ -2285,7 +2300,7 @@ Battle = (function () {
 				p1request = {forceSwitch: switchTable, side: this.p1.getData(), rqid: this.rqid};
 			}
 			switchTable = [];
-			for (var i=0, l=this.p2.active.length; i<l; i++) {
+			for (var i = 0, l = this.p2.active.length; i < l; i++) {
 				active = this.p2.active[i];
 				switchTable.push(!!(active && active.switchFlag));
 			}
@@ -2682,7 +2697,7 @@ Battle = (function () {
 		}
 
 		if (instafaint && !target.hp) {
-			this.debug('instafaint: '+this.faintQueue.map('target').map('name'));
+			this.debug('instafaint: ' + this.faintQueue.map('target').map('name'));
 			this.faintMessages(true);
 		} else {
 			damage = this.runEvent('AfterDamage', target, source, effect, damage);
@@ -2804,12 +2819,6 @@ Battle = (function () {
 
 		if (move.affectedByImmunities) {
 			if (!target.runImmunity(move.type, true)) {
-				return false;
-			}
-		}
-
-		if (move.isSoundBased && (pokemon !== target || this.gen <= 4)) {
-			if (!target.runImmunity('sound', true)) {
 				return false;
 			}
 		}
@@ -2937,9 +2946,6 @@ Battle = (function () {
 
 		// randomizer
 		// this is not a modifier
-		// gen 1-2
-		//var randFactor = Math.floor(Math.random() * 39) + 217;
-		//baseDamage *= Math.floor(randFactor * 100 / 255) / 100;
 		baseDamage = Math.floor(baseDamage * (100 - this.random(16)) / 100);
 
 		// STAB
@@ -2954,7 +2960,7 @@ Battle = (function () {
 		var totalTypeMod = 0;
 
 		if (target.negateImmunity[move.type] !== 'IgnoreEffectiveness' || this.getImmunity(move.type, target)) {
-			totalTypeMod = this.getEffectiveness(move, target, pokemon);
+			totalTypeMod = target.runEffectiveness(move);
 		}
 
 		totalTypeMod = this.clampIntRange(totalTypeMod, -6, 6);
@@ -3376,7 +3382,6 @@ Battle = (function () {
 				break;
 			}
 			this.switchIn(decision.target, decision.pokemon.position);
-			//decision.target.runSwitchIn();
 			break;
 		case 'runSwitch':
 			decision.pokemon.isStarted = true;
@@ -3422,7 +3427,7 @@ Battle = (function () {
 
 		// switching (fainted pokemon, U-turn, Baton Pass, etc)
 
-		if (!this.queue.length || (this.gen <= 3 && this.queue[0].choice in {move:1,residual:1})) {
+		if (!this.queue.length || (this.gen <= 3 && this.queue[0].choice in {move:1, residual:1})) {
 			// in gen 3 or earlier, switching in fainted pokemon is done after
 			// every move, rather than only at the end of the turn.
 			this.checkFainted();
@@ -3527,6 +3532,11 @@ Battle = (function () {
 		// from splitting the string sent by our forked process, not from the
 		// client. However, just in case, we maintain this check for now.
 		if (typeof choice === 'string') choice = choice.split(',');
+
+		if (side.decision && side.decision.finalDecision) {
+			this.debug("Can't cancel decision: the last pokemon could have been trapped");
+			return;
+		}
 
 		side.decision = this.parseChoice(choice, side);
 
@@ -3648,21 +3658,6 @@ Battle = (function () {
 
 			case 'switch':
 				if (i > side.active.length || i > side.pokemon.length) continue;
-				if (side.currentRequest === 'move') {
-					if (side.pokemon[i].trapped) {
-						//this.debug("Can't switch: The active pokemon is trapped");
-						side.emitCallback('trapped', i);
-						return false;
-					} else if (side.pokemon[i].maybeTrapped) {
-						var finalDecision = true;
-						for (var j = i + 1; j < side.active.length; ++j) {
-							if (side.active[j] && !side.active[j].fainted) {
-								finalDecision = false;
-							}
-						}
-						decisions.finalDecision = decisions.finalDecision || finalDecision;
-					}
-				}
 
 				data = parseInt(data, 10) - 1;
 				if (data < 0) data = 0;
@@ -3689,6 +3684,17 @@ Battle = (function () {
 					return false;
 				}
 				prevSwitches[data] = true;
+
+				if (side.currentRequest === 'move') {
+					if (side.pokemon[i].trapped) {
+						//this.debug("Can't switch: The active pokemon is trapped");
+						side.emitCallback('trapped', i);
+						return false;
+					} else if (side.pokemon[i].maybeTrapped) {
+						var finalDecision = true;
+						decisions.finalDecision = decisions.finalDecision || side.pokemon[i].isLastActive();
+					}
+				}
 
 				decisions.push({
 					choice: 'switch',
@@ -3882,10 +3888,10 @@ Battle = (function () {
 	// IPC
 
 	// Messages sent by this function are received and handled in
-	// Simulator.prototype.receive in simulator.js (in another process).
+	// Battle.prototype.receive in simulator.js (in another process).
 	Battle.prototype.send = function (type, data) {
 		if (Array.isArray(data)) data = data.join("\n");
-		battleEngineFakeProcess.client.send(this.id + "\n" + type + "\n" + data);
+		process.send(this.id + "\n" + type + "\n" + data);
 	};
 	// This function is called by this process's 'message' event.
 	Battle.prototype.receive = function (data, more) {
