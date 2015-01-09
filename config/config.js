@@ -285,7 +285,6 @@ exports.groups = {
 		away: true,
 		afk: true,
 		back: true,
-		sudo: false,
 		rank: 0
 	}
 };
