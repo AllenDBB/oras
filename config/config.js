@@ -137,7 +137,7 @@ exports.herokuhack = false;
 //
 // Your server *must* be registered in order for your custom avatars to be
 // displayed in the client.
-exports.customAvatars = {'hashtagarmcannons': 'hashtagarmcannons.gif', 'absolutemaximum': 'absolutemaximum.gif', 'shedinjanigans': 'shedinjanigans.gif', 'dabicboi': 'dabicboi.png'
+exports.customavatars = {'hashtagarmcannons': 'hashtagarmcannons.gif', 'absolutemaximum': 'absolutemaximum.gif', 'shedinjanigans': 'shedinjanigans.gif', 'dabicboi': 'dabicboi.png'
 	//'userid': 'customavatar.png'
 };
 
