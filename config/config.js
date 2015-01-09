@@ -192,6 +192,7 @@ exports.groups = {
 		root: true,
 		globalonly: true,
 		gdeclare: true,
+		sudo: true,
 		rank: 7
 	},
 	'&': {
@@ -207,6 +208,7 @@ exports.groups = {
 		potd: true,
 		disableladder: true,
 		globalonly: true,
+		sudo: false,
 		rank: 6
 	},
 	'#': {
@@ -219,6 +221,7 @@ exports.groups = {
 		declare: true,
 		modchatall: true,
 		roomonly: true,
+		sudo: false,
 		rank: 5
 	},
 	'\u2605': {
@@ -229,6 +232,7 @@ exports.groups = {
 		modchat: true,
 		roomonly: true,
 		privateroom: true,
+		sudo: false,
 		rank: 4
 	},
 	'@': {
@@ -241,6 +245,7 @@ exports.groups = {
 		roomvoice: true,
 		forcerename: true,
 		ip: true,
+		sudo: false,
 		alts: '@u',
 		rank: 3
 	},
@@ -260,6 +265,7 @@ exports.groups = {
 		alts: '%u',
 		bypassblocks: 'u%@&~',
 		receiveauthmessages: true,
+		sudo: false,
 		rank: 2
 	},
 	'+': {
@@ -270,6 +276,7 @@ exports.groups = {
 		joinbattle: true,
 		tournaments: true,
 		tournamentsmoderation: true,
+		sudo: false,
 		rank: 1
 	},
 	' ': {
@@ -278,6 +285,7 @@ exports.groups = {
 		away: true,
 		afk: true,
 		back: true,
+		sudo: false,
 		rank: 0
 	}
 };
