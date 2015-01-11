@@ -328,7 +328,7 @@ var components = exports.components = {
             "was hit by Magikarp's Revenge!",
             "ate a bomb!",
             "is blasting off again!",
-            "(Quit: oh god how did this get here i am not good with computer)",
+            "quit: oh god how did this get here i am not good with computer",
             "was unfortunate and didn't get a cool message.",
             "The Immortal accidently kicked {{user}} from the server!",
 			"has been expelled from server by 01AceKing!",
