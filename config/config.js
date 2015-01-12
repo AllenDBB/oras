@@ -279,6 +279,15 @@ exports.groups = {
 		sudo: false,
 		rank: 1
 	},
+	'^': {
+		ip: 'testrank',
+		alts: 'Testrank',
+		away: true,
+		afk: true,
+		back: true,
+		sudo: false,
+		rank: 0
+	},
 	' ': {
 		ip: 's',
 		alts: 's',
