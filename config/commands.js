@@ -658,7 +658,8 @@ var commands = exports.commands = {
 	atmn: 'autumn',
 	autumn: function(target, room, user) {
                     if(!this.canBroadcast()) return;
-                    this.sendReplyBox('<center><img src="http://107.161.19.92:8000/TCs/autumn.png"><br />')
+                    this.sendReplyBox('<center><img src="http://107.161.19.92:8000/TCs/autumn.png"><br />' +
+					'<font color=pink>"DBB plis"</font>')
             },
 	rekt: function(target, room, user) {
                     if(!this.canBroadcast()) return;
