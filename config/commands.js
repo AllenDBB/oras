@@ -655,6 +655,11 @@ var commands = exports.commands = {
                     this.sendReplyBox('<center><img src="http://107.161.19.92:8000/TCs/poto.jpg" height="188" width="300"><br />' +
                                       '<font color=blue><b>#kammi</b></font>')
 									  },
+	atmn: 'autumn',
+	autumn: function(target, room, user) {
+                    if(!this.canBroadcast()) return;
+                    this.sendReplyBox('<center><img src="http://107.161.19.92:8000/TCs/autumn.png"><br />')
+            },
 	rekt: function(target, room, user) {
                     if(!this.canBroadcast()) return;
                     this.sendReplyBox('<center><img src="http://107.161.19.92:8000/TCs/rekt.gif"><br />')
