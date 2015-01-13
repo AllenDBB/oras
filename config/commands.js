@@ -659,7 +659,7 @@ var commands = exports.commands = {
 	autumn: function(target, room, user) {
                     if(!this.canBroadcast()) return;
                     this.sendReplyBox('<center><img src="http://107.161.19.92:8000/TCs/autumn.png"><br />' +
-					'<font color=pink>"DBB plis"</font>')
+					'<font color=pink><b>"DBB plis"<b></font>')
             },
 	rekt: function(target, room, user) {
                     if(!this.canBroadcast()) return;
