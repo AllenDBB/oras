@@ -193,7 +193,7 @@ exports.groups = {
 		globalonly: true,
 		gdeclare: true,
 		sudo: true,
-		rank: 8
+		rank: 7
 	},
 	'&': {
 		id: "leader",
@@ -209,7 +209,7 @@ exports.groups = {
 		disableladder: true,
 		globalonly: true,
 		sudo: false,
-		rank: 7
+		rank: 6
 	},
 	'#': {
 		id: "owner",
@@ -222,7 +222,7 @@ exports.groups = {
 		modchatall: true,
 		roomonly: true,
 		sudo: false,
-		rank: 6
+		rank: 5
 	},
 	'\u2605': {
 		id: "player",
@@ -233,7 +233,7 @@ exports.groups = {
 		roomonly: true,
 		privateroom: true,
 		sudo: false,
-		rank: 5
+		rank: 4
 	},
 	'@': {
 		id: "mod",
@@ -247,7 +247,7 @@ exports.groups = {
 		ip: true,
 		sudo: false,
 		alts: '@u',
-		rank: 4
+		rank: 3
 	},
 	'%': {
 		id: "driver",
@@ -266,7 +266,7 @@ exports.groups = {
 		bypassblocks: 'u%@&~',
 		receiveauthmessages: true,
 		sudo: false,
-		rank: 3
+		rank: 2
 	},
 	'+': {
 		id: "voice",
@@ -277,18 +277,9 @@ exports.groups = {
 		tournaments: true,
 		tournamentsmoderation: true,
 		sudo: false,
-		rank: 2
-	},
-	'^': {
-		ip: 'testrank',
-		alts: 'Testrank',
-		away: true,
-		afk: true,
-		back: true,
-		sudo: false,
 		rank: 1
 	},
-	' ': {
+		' ': {
 		ip: 's',
 		alts: 's',
 		away: true,
