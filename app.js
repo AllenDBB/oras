@@ -95,7 +95,7 @@ global.Config = require('./config/config.js');
 try {
     global.reloadCustomAvatars = function() {
         var path = require('path');
-        var newCustomAvatars = {};
+        var newcustomAvatars = {};
         fs.readdirSync('./config/avatars').forEach(function(file) {
             var ext = path.extname(file);
             if (ext !== '.png' && ext !== '.gif') return;
