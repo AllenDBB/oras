@@ -100,7 +100,7 @@ try {
             var ext = path.extname(file);
             if (ext !== '.png' && ext !== '.gif') return;
             var user = toId(path.basename(file, ext));
-            newCustomAvatars[user] = file;
+            newcustomAvatars[user] = file;
             if (Config.customAvatars[user]) {
             	delete Config.customAvatars[user];
             }
@@ -109,7 +109,7 @@ try {
         // Make sure the manually entered avatars exist
         for (var a in Config.customAvatars) {
             if (typeof Config.customAvatars[a] === 'number') {
-                newCustomAvatars[a] = Config.customAvatars[a];
+                newcustomAvatars[a] = Config.customAvatars[a];
             } else {
                 fs.exists('./config/avatars/' + Config.customAvatars[a], (function(user, file, isExists) {
                     if (isExists) {
@@ -118,7 +118,7 @@ try {
                 }).bind(null, a, Config.customAvatars[a]));
             }
         }
-        Config.customAvatars = newCustomAvatars;
+        Config.customAvatars = newcustomAvatars;
     };
 } catch (e) {
     console.log('Custom avatar failed to load. Try this:\nIn config.js on line 140, change customavatar to customAvatar.');
