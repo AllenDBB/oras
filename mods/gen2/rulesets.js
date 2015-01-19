@@ -107,18 +107,7 @@ exports.BattleFormats = {
 	standard: {
 		effectType: 'Banlist',
 		ruleset: ['Sleep Clause Mod', 'Species Clause', 'OHKO Clause', 'Evasion Moves Clause', 'HP Percentage Mod'],
-		banlist: ['Unreleased', 'Illegal',
-			'Hypnosis + Perish Song + Mean Look',
-			'Hypnosis + Perish Song + Spider Web',
-			'Lovely Kiss + Perish Song + Mean Look',
-			'Lovely Kiss + Perish Song + Spider Web',
-			'Sing + Perish Song + Mean Look',
-			'Sing + Perish Song + Spider Web',
-			'Sleep Powder + Perish Song + Mean Look',
-			'Sleep Powder + Perish Song + Spider Web',
-			'Spore + Perish Song + Mean Look',
-			'Spore + Perish Song + Spider Web'
-		],
+		banlist: ['Unreleased', 'Illegal'],
 		validateSet: function (set) {
 			// limit one of each move in Standard
 			var moves = [];

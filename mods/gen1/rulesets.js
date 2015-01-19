@@ -48,17 +48,8 @@ exports.BattleFormats = {
 	},
 	standard: {
 		effectType: 'Banlist',
-		ruleset: ['Sleep Clause Mod', 'Freeze Clause Mod', 'Species Clause', 'OHKO Clause', 'Evasion Moves Clause', 'HP Percentage Mod'],
-		banlist: ['Unreleased', 'Illegal', 'Tradeback',
-			'Kakuna + Poison Sting + Harden', 'Kakuna + String Shot + Harden',
-			'Beedrill + Poison Sting + Harden', 'Beedrill + String Shot + Harden',
-			'Nidoking + Fury Attack + Thrash',
-			'Exeggutor + Poison Powder + Stomp', 'Exeggutor + Sleep Powder + Stomp', 'Exeggutor + Stun Spore + Stomp',
-			'Eevee + Tackle + Growl',
-			'Vaporeon + Tackle + Growl',
-			'Jolteon + Tackle + Growl', 'Jolteon + Focus Energy + Thunder Shock',
-			'Flareon + Tackle + Growl', 'Flareon + Focus Energy + Ember'
-		],
+		ruleset: ['Sleep Clause Mod', 'Species Clause', 'OHKO Clause', 'Evasion Moves Clause', 'HP Percentage Mod'],
+		banlist: ['Unreleased', 'Illegal', 'Tradeback'],
 		validateSet: function (set) {
 			// limit one of each move in Standard
 			var moves = [];

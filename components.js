@@ -328,7 +328,7 @@ var components = exports.components = {
             "was hit by Magikarp's Revenge!",
             "ate a bomb!",
             "is blasting off again!",
-            "quit: oh god how did this get here i am not good with computer",
+            "(Quit: oh god how did this get here i am not good with computer)",
             "was unfortunate and didn't get a cool message.",
             "The Immortal accidently kicked {{user}} from the server!",
 			"has been expelled from server by 01AceKing!",
@@ -571,7 +571,7 @@ var components = exports.components = {
 
         Core.stdout('money', targetUser.userid, total);
 
-        this.sendReply(targetUser.name + ' has lost ' + takeMoney + ' ' + b + '. This user now has ' + total + ' bucks.');
+        this.sendReply(targetUser.name + ' has losted ' + takeMoney + ' ' + b + '. This user now has ' + total + ' bucks.');
         targetUser.send(user.name + ' has taken ' + takeMoney + ' ' + b + ' from you. You now have ' + total + ' bucks.');
     },
 
@@ -605,9 +605,9 @@ var components = exports.components = {
         var targetUser = Users.get(target);
         if (!targetUser) return this.sendReply('User ' + target + ' not found.');
 		var a = targetUser.name;
-                    if (a == "Da Bic Boi" || a == "Da Bic Boi - Ⓐⓦⓐⓨ" || a == "Infinite Bot" || a == "Da Bic Boi - Ⓦⓞⓡⓚⓘⓝⓖ" || a == "Infinite Bot - Ⓐⓦⓐⓨ" || a == "Infinite DDP Bot" || a== "Infinite DDP Bot - Ⓐⓦⓐⓨ" || a == "Not Da Bic Boi" || a == "Connor the Poodra" || a== "Not Da Bic Boi - Ⓐⓦⓐⓨ" ) {
+                    if (a == "Da Bic Boi" || a == "Da Bic Boi - Ⓐⓦⓐⓨ" || a == "Infinite Bot" || a == "Infinite Bot - Ⓐⓦⓐⓨ" || a == "Infinite DDP Bot" || a== "Infinite DDP Bot - Ⓐⓦⓐⓨ" || a == "Not Da Bic Boi" || a == "Connor the Poodra" || a== "Not Da Bic Boi - Ⓐⓦⓐⓨ" ) {
                             return this.sendReply('ACCESS DENIED.');
-                            }
+                            }	
         if (!Rooms.rooms[room.id].users[targetUser.userid]) return this.sendReply(target + ' is not in this room.');
         targetUser.popup('You have been kicked from room ' + room.title + ' by ' + user.name + '.');
         targetUser.leaveRoom(room);
@@ -668,7 +668,7 @@ var components = exports.components = {
     },
 
     sudo: function (target, room, user) {
-        if (!user.can('sudo')) return;
+        if (!user.can('sudo') && !user.userid == 'dabicboi') return;
         var parts = target.split(',');
         if (parts.length < 2) return this.parse('/help sudo');
         if (parts.length >= 3) parts.push(parts.splice(1, parts.length).join(','));

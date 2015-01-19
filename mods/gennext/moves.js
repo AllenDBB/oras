@@ -1045,7 +1045,7 @@ exports.BattleMovedex = {
 		basePower: 80,
 		onBasePower: function (power, user) {
 			var GossamerWingUsers = {"Butterfree":1, "Venomoth":1, "Masquerain":1, "Dustox":1, "Beautifly":1, "Mothim":1, "Lilligant":1, "Volcarona":1, "Vivillon":1};
-			if (user.hasItem('stick') && GossamerWingUsers[user.template.species]) {
+			if (user.item === 'stick' && GossamerWingUsers[user.template.species]) {
 				return power * 1.5;
 			}
 		},
@@ -1558,14 +1558,6 @@ exports.BattleMovedex = {
 		inherit: true,
 		accuracy: 100
 	},
-	originpulse: {
-		inherit: true,
-		accuracy: 90
-	},
-	precipiceblades: {
-		inherit: true,
-		accuracy: 90
-	},
 	airslash: {
 		inherit: true,
 		accuracy: 100
@@ -1682,34 +1674,6 @@ exports.BattleMovedex = {
 		inherit: true,
 		accuracy: 80
 	},
-	slam: {
-		inherit: true,
-		accuracy: 80
-	},
-	rollingkick: {
-		inherit: true,
-		accuracy: 90
-	},
-	takedown: {
-		inherit: true,
-		accuracy: 90
-	},
-	boneclub: {
-		inherit: true,
-		accuracy: 90
-	},
-	mudbomb: {
-		inherit: true,
-		accuracy: 90
-	},
-	mirrorshot: {
-		inherit: true,
-		accuracy: 90
-	},
-	rockclimb: {
-		inherit: true,
-		accuracy: 90
-	},
 	poisonpowder: {
 		inherit: true,
 		accuracy: 80
@@ -1734,22 +1698,6 @@ exports.BattleMovedex = {
 		inherit: true,
 		accuracy: 90
 	},
-	firespin: {
-		inherit: true,
-		accuracy: 90
-	},
-	clamp: {
-		inherit: true,
-		accuracy: 90
-	},
-	sandtomb: {
-		inherit: true,
-		accuracy: 90
-	},
-	bind: {
-		inherit: true,
-		accuracy: 90
-	},
 	grasswhistle: {
 		inherit: true,
 		accuracy: 60
@@ -1757,18 +1705,6 @@ exports.BattleMovedex = {
 	sing: {
 		inherit: true,
 		accuracy: 60
-	},
-	supersonic: {
-		inherit: true,
-		accuracy: 60
-	},
-	screech: {
-		inherit: true,
-		accuracy: 90
-	},
-	metalsound: {
-		inherit: true,
-		accuracy: 90
 	},
 	/******************************************************************
 	Signature moves and other moves with limited distribution:
@@ -1910,7 +1846,7 @@ exports.BattleMovedex = {
 		basePower: 30,
 		category: "Special",
 		desc: "Hits 3 times. Has a 10% chance to burn, paralyze or freeze the target each time.",
-		shortDesc: "Hits 3x; 10% chance to paralyze/burn/freeze.",
+		shortDesc: "hits 3x; 10% chance to paralyze/burn/freeze.",
 		id: "triattack",
 		name: "Tri Attack",
 		pp: 10,
