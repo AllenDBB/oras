@@ -68,10 +68,11 @@ exports.BattleAbilities = {
 	"aerilate": {
 		desc: "Turns all of this Pokemon's Normal-typed attacks into Flying-type and deal 1.3x damage. Does not affect Hidden Power.",
 		shortDesc: "This Pokemon's Normal moves become Flying-type and do 1.3x damage.",
+		onModifyMovePriority: -1,
 		onModifyMove: function (move, pokemon) {
-			if (move.type === 'Normal' && move.id !== 'hiddenpower') {
+			if (move.type === 'Normal' && move.id !== 'naturalgift') {
 				move.type = 'Flying';
-				pokemon.addVolatile('aerilate');
+				if (move.category !== 'Status') pokemon.addVolatile('aerilate');
 			}
 		},
 		effect: {
@@ -140,7 +141,7 @@ exports.BattleAbilities = {
 				for (var j = 0; j < targets[i].moveset.length; j++) {
 					var move = this.getMove(targets[i].moveset[j].move);
 					if (move.category !== 'Status' && (this.getImmunity(move.type, pokemon) && this.getEffectiveness(move.type, pokemon) > 0 || move.ohko)) {
-						this.add('-message', pokemon.name + ' shuddered! (placeholder)');
+						this.add('-activate', pokemon, 'ability: Anticipation');
 						return;
 					}
 				}
@@ -275,7 +276,7 @@ exports.BattleAbilities = {
 		desc: "This Pokemon is protected from some Ball and Bomb moves.",
 		shortDesc: "This Pokemon is protected from ball and bomb moves.",
 		onTryHit: function (pokemon, target, move) {
-			if (move.isBullet) {
+			if (move.flags && move.flags['bullet']) {
 				this.add('-immune', pokemon, '[msg]', '[from] Bulletproof');
 				return null;
 			}
@@ -289,7 +290,7 @@ exports.BattleAbilities = {
 		desc: "Restores HP when this Pokemon consumes a berry.",
 		shortDesc: "Restores HP when this Pokemon consumes a berry.",
 		onEatItem: function (item, pokemon) {
-			this.heal(pokemon.maxhp / 4);
+			this.heal(pokemon.maxhp / 3);
 		},
 		id: "cheekpouch",
 		name: "Cheek Pouch",
@@ -527,6 +528,20 @@ exports.BattleAbilities = {
 		onStart: function (source) {
 			this.setWeather('deltastream');
 		},
+		onEnd: function (pokemon) {
+			if (this.weatherData.source !== pokemon) return;
+			for (var i = 0; i < this.sides.length; i++) {
+				for (var j = 0; j < this.sides[i].active.length; j++) {
+					var target = this.sides[i].active[j];
+					if (target === pokemon) continue;
+					if (target && target.hp && target.ability === 'deltastream' && target.ignore['Ability'] !== true) {
+						this.weatherData.source = target;
+						return;
+					}
+				}
+			}
+			this.clearWeather();
+		},
 		id: "deltastream",
 		name: "Delta Stream",
 		rating: 5,
@@ -537,6 +552,20 @@ exports.BattleAbilities = {
 		shortDesc: "The weather becomes harsh sun until this Pokemon leaves battle.",
 		onStart: function (source) {
 			this.setWeather('desolateland');
+		},
+		onEnd: function (pokemon) {
+			if (this.weatherData.source !== pokemon) return;
+			for (var i = 0; i < this.sides.length; i++) {
+				for (var j = 0; j < this.sides[i].active.length; j++) {
+					var target = this.sides[i].active[j];
+					if (target === pokemon) continue;
+					if (target && target.hp && target.ability === 'desolateland' && target.ignore['Ability'] !== true) {
+						this.weatherData.source = target;
+						return;
+					}
+				}
+			}
+			this.clearWeather();
 		},
 		id: "desolateland",
 		name: "Desolate Land",
@@ -641,9 +670,13 @@ exports.BattleAbilities = {
 		onAfterDamage: function (damage, target, source, move) {
 			if (move && move.isContact && !source.status && source.runImmunity('powder')) {
 				var r = this.random(100);
-				if (r < 11) source.setStatus('slp', target);
-				else if (r < 21) source.setStatus('par', target);
-				else if (r < 30) source.setStatus('psn', target);
+				if (r < 11) {
+					source.setStatus('slp', target);
+				} else if (r < 21) {
+					source.setStatus('par', target);
+				} else if (r < 30) {
+					source.setStatus('psn', target);
+				}
 			}
 		},
 		id: "effectspore",
@@ -905,11 +938,11 @@ exports.BattleAbilities = {
 		num: 119
 	},
 	"furcoat": {
-		desc: "Halves the damage done to this Pokemon by physical attacks.",
-		shortDesc: "Halves physical damage done to this Pokemon.",
-		onModifyAtkPriority: 6,
-		onSourceModifyAtk: function (atk, attacker, defender, move) {
-			return this.chainModify(0.5);
+		desc: "This Pokemon's Defense is doubled.",
+		shortDesc: "This Pokemon's Defense is doubled.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def) {
+			return this.chainModify(2);
 		},
 		id: "furcoat",
 		name: "Fur Coat",
@@ -1464,9 +1497,9 @@ exports.BattleAbilities = {
 	"magician": {
 		desc: "If this Pokemon is not holding an item, it steals the held item of a target it hits with a move.",
 		shortDesc: "This Pokemon steals the held item of a target it hits with a move.",
-		onHit: function (target, source, move) {
-			// We need to hard check if the ability is Magician since the event will be run both ways.
-			if (target && target !== source && source.ability === 'magician' && move && move.category !== 'Status') {
+		onSourceHit: function (target, source, move) {
+			if (!move || !target) return;
+			if (target !== source && move.category !== 'Status') {
 				if (source.item) return;
 				var yourItem = target.takeItem(source);
 				if (!yourItem) return;
@@ -1536,7 +1569,7 @@ exports.BattleAbilities = {
 		shortDesc: "Boosts the power of Aura/Pulse moves by 50%.",
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
-			if (move.isPulseMove) {
+			if (move.flags && move.flags['pulse']) {
 				return this.chainModify(1.5);
 			}
 		},
@@ -1669,9 +1702,6 @@ exports.BattleAbilities = {
 		desc: "If this Pokemon is Arceus, its type and sprite change to match its held Plate. Either way, this Pokemon is holding a Plate, the Plate cannot be taken (such as by Trick or Thief). This ability cannot be Skill Swapped, Role Played or Traced.",
 		shortDesc: "If this Pokemon is Arceus, its type changes to match its held Plate.",
 		// Multitype's type-changing itself is implemented in statuses.js
-		onTakeItem: function (item) {
-			if (item.onPlate) return false;
-		},
 		id: "multitype",
 		name: "Multitype",
 		rating: 4,
@@ -1723,6 +1753,7 @@ exports.BattleAbilities = {
 	"normalize": {
 		desc: "Makes all of this Pokemon's attacks Normal-typed.",
 		shortDesc: "This Pokemon's moves all become Normal-typed.",
+		onModifyMovePriority: 1,
 		onModifyMove: function (move) {
 			if (move.id !== 'struggle') {
 				move.type = 'Normal';
@@ -1739,12 +1770,11 @@ exports.BattleAbilities = {
 		onUpdate: function (pokemon) {
 			if (pokemon.volatiles['attract']) {
 				pokemon.removeVolatile('attract');
-				this.add("-message", pokemon.name + " got over its infatuation. (placeholder)");
+				this.add('-end', pokemon, 'move: Attract');
 			}
 			if (pokemon.volatiles['taunt']) {
 				pokemon.removeVolatile('taunt');
-				// TODO: Research proper message.
-				this.add("-message", pokemon.name + " got over its taunt. (placeholder)");
+				// Taunt's volatile already sends the -end message when removed
 			}
 		},
 		onImmunity: function (type, pokemon) {
@@ -1889,10 +1919,11 @@ exports.BattleAbilities = {
 	"pixilate": {
 		desc: "Turns all of this Pokemon's Normal-typed attacks into Fairy-type and deal 1.3x damage. Does not affect Hidden Power.",
 		shortDesc: "This Pokemon's Normal moves become Fairy-type and do 1.3x damage.",
+		onModifyMovePriority: -1,
 		onModifyMove: function (move, pokemon) {
-			if (move.type === 'Normal' && move.id !== 'hiddenpower') {
+			if (move.type === 'Normal' && move.id !== 'naturalgift') {
 				move.type = 'Fairy';
-				pokemon.addVolatile('pixilate');
+				if (move.category !== 'Status') pokemon.addVolatile('pixilate');
 			}
 		},
 		effect: {
@@ -2009,6 +2040,20 @@ exports.BattleAbilities = {
 		onStart: function (source) {
 			this.setWeather('primordialsea');
 		},
+		onEnd: function (pokemon) {
+			if (this.weatherData.source !== pokemon) return;
+			for (var i = 0; i < this.sides.length; i++) {
+				for (var j = 0; j < this.sides[i].active.length; j++) {
+					var target = this.sides[i].active[j];
+					if (target === pokemon) continue;
+					if (target && target.hp && target.ability === 'primordialsea' && target.ignore['Ability'] !== true) {
+						this.weatherData.source = target;
+						return;
+					}
+				}
+			}
+			this.clearWeather();
+		},
 		id: "primordialsea",
 		name: "Primordial Sea",
 		rating: 5,
@@ -2098,10 +2143,11 @@ exports.BattleAbilities = {
 	"refrigerate": {
 		desc: "Turns all of this Pokemon's Normal-typed attacks into Ice-typed and deal 1.3x damage. Does not affect Hidden Power.",
 		shortDesc: "This Pokemon's Normal moves become Ice-type and do 1.3x damage.",
+		onModifyMovePriority: -1,
 		onModifyMove: function (move, pokemon) {
-			if (move.type === 'Normal' && move.id !== 'hiddenpower') {
+			if (move.type === 'Normal' && move.id !== 'naturalgift') {
 				move.type = 'Ice';
-				pokemon.addVolatile('refrigerate');
+				if (move.category !== 'Status') pokemon.addVolatile('refrigerate');
 			}
 		},
 		effect: {
@@ -2275,6 +2321,7 @@ exports.BattleAbilities = {
 	"scrappy": {
 		desc: "This Pokemon has the ability to hit Ghost-type Pokemon with Normal-type and Fighting-type moves. Effectiveness of these moves takes into account the Ghost-type Pokemon's other weaknesses and resistances.",
 		shortDesc: "This Pokemon can hit Ghost-types with Normal- and Fighting-type moves.",
+		onModifyMovePriority: -5,
 		onModifyMove: function (move) {
 			if (move.type in {'Fighting':1, 'Normal':1}) {
 				move.affectedByImmunities = false;
@@ -2289,7 +2336,7 @@ exports.BattleAbilities = {
 		desc: "This Pokemon's moves have their secondary effect chance doubled. For example, if this Pokemon uses Ice Beam, it will have a 20% chance to freeze its target.",
 		shortDesc: "This Pokemon's moves have their secondary effect chance doubled.",
 		onModifyMove: function (move) {
-			if (move.secondaries) {
+			if (move.secondaries && move.id !== 'secretpower') {
 				this.debug('doubling secondary chance');
 				for (var i = 0; i < move.secondaries.length; i++) {
 					move.secondaries[i].chance *= 2;
@@ -2564,7 +2611,7 @@ exports.BattleAbilities = {
 	"stancechange": {
 		desc: "Only affects Aegislash. If this Pokemon uses a Physical or Special move, it changes to Blade forme. If this Pokemon uses King's Shield, it changes to Shield forme.",
 		shortDesc: "The Pokemon changes form depending on how it battles.",
-		onBeforeMovePriority: 10,
+		onBeforeMovePriority: 11,
 		onBeforeMove: function (attacker, defender, move) {
 			if (attacker.template.baseSpecies !== 'Aegislash') return;
 			if (move.category === 'Status' && move.id !== 'kingsshield') return;
@@ -2665,7 +2712,7 @@ exports.BattleAbilities = {
 		shortDesc: "This Pokemon's bite-based attacks do 1.5x damage.",
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
-			if (move.isBiteAttack) {
+			if (move.flags && move.flags['bite']) {
 				return this.chainModify(1.5);
 			}
 		},
@@ -2776,7 +2823,12 @@ exports.BattleAbilities = {
 		desc: "This Pokemon immediately passes its item to an ally after their item is consumed.",
 		shortDesc: "This Pokemon passes its item to an ally after their item is consumed.",
 		onAllyAfterUseItem: function (item, pokemon) {
-			var sourceItem = this.effectData.target.takeItem();
+			var sourceItem = this.effectData.target.getItem();
+			var noSharing = sourceItem.onTakeItem && sourceItem.onTakeItem(sourceItem, pokemon) === false;
+			if (!sourceItem || noSharing) {
+				return;
+			}
+			sourceItem = this.effectData.target.takeItem();
 			if (!sourceItem) {
 				return;
 			}
@@ -2984,6 +3036,7 @@ exports.BattleAbilities = {
 	"truant": {
 		desc: "After this Pokemon is switched into battle, it skips every other turn.",
 		shortDesc: "This Pokemon skips every other turn instead of using a move.",
+		onBeforeMovePriority: 9,
 		onBeforeMove: function (pokemon, target, move) {
 			if (pokemon.removeVolatile('truant')) {
 				this.add('cant', pokemon, 'ability: Truant', move);
@@ -2991,7 +3044,6 @@ exports.BattleAbilities = {
 			}
 			pokemon.addVolatile('truant');
 		},
-		onBeforeMovePriority: 99,
 		effect: {
 			duration: 2
 		},
@@ -3233,7 +3285,6 @@ exports.BattleAbilities = {
 			onStart: function (pokemon) {
 				if (pokemon.formeChange('Darmanitan-Zen')) {
 					this.add('-formechange', pokemon, 'Darmanitan-Zen');
-					this.add('-message', 'Zen Mode triggered! (placeholder)');
 				} else {
 					return false;
 				}
@@ -3241,7 +3292,6 @@ exports.BattleAbilities = {
 			onEnd: function (pokemon) {
 				if (pokemon.formeChange('Darmanitan')) {
 					this.add('-formechange', pokemon, 'Darmanitan');
-					this.add('-message', 'Zen Mode ended! (placeholder)');
 				} else {
 					return false;
 				}

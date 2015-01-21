@@ -421,3 +421,143 @@ TypeError: Cannot read property 'booty' of undefined
 TypeError: Cannot read property 'bootybot' of undefined
     at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:537:1019)
     at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+SyntaxError: Unexpected token <<
+    at Module._compile (module.js:439:25)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\app.js:411:18)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+
+SyntaxError: Unexpected token <<
+    at Module._compile (module.js:439:25)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\app.js:411:18)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+
+SyntaxError: Unexpected token <<
+    at Module._compile (module.js:439:25)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\app.js:411:18)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+
+SyntaxError: Unexpected token )
+    at Module._compile (module.js:439:25)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\app.js:411:18)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+
+SyntaxError: Unexpected token ;
+    at Module._compile (module.js:439:25)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\app.js:411:18)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+
+Error: Cannot find module 'request'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\components.js:18:15)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+
+Error: Cannot find module 'request'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\components.js:18:15)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+
+Error: Cannot find module 'request'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\components.js:18:15)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+
+TypeError: Object function getRoom(roomid, fallback) {
+	if (roomid && roomid.id) return roomid;
+	if (!roomid) roomid = 'default';
+	if (!rooms[roomid] && fallback) {
+		return rooms.global;
+	}
+	return rooms[roomid];
+} has no method 'search'
+    at Object.exports.commands.join (C:\Users\Allen\Documents\GitHub\oras\commands.js:602:26)
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:85:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1508:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at EventEmitter.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:47:11)
+    at EventEmitter.emit (events.js:95:17)
+    at processImmediate [as _immediateCallback] (timers.js:345:15)
+
+Additional information:
+user = Guest 2
+room = lobby
+message = /join lobby
+
+TypeError: Object function getRoom(roomid, fallback) {
+	if (roomid && roomid.id) return roomid;
+	if (!roomid) roomid = 'default';
+	if (!rooms[roomid] && fallback) {
+		return rooms.global;
+	}
+	return rooms[roomid];
+} has no method 'search'
+    at Object.exports.commands.join (C:\Users\Allen\Documents\GitHub\oras\commands.js:602:26)
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.chat (C:\Users\Allen\Documents\GitHub\oras\users.js:1508:9)
+    at Function.Users.socketReceive (C:\Users\Allen\Documents\GitHub\oras\users.js:361:12)
+    at EventEmitter.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\sockets.js:47:11)
+    at EventEmitter.emit (events.js:95:17)
+    at processImmediate [as _immediateCallback] (timers.js:345:15)
+
+Additional information:
+user = Guest 2
+room = lobby
+message = /join lobby
