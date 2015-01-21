@@ -561,3 +561,43 @@ Additional information:
 user = Guest 2
 room = lobby
 message = /join lobby
+
+TypeError: Cannot read property 'infinitebot' of undefined
+    at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:537:1028)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+TypeError: Cannot read property 'infinitebot' of undefined
+    at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:537:1028)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+TypeError: Cannot read property 'infinitebot' of undefined
+    at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:537:1028)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+SyntaxError: Unexpected identifier
+    at Module._compile (module.js:439:25)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (C:\Users\Allen\Documents\GitHub\oras\app.js:413:14)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+
+ReferenceError: infinitebot is not defined
+    at Object.infinitereplace.challenge (C:\Users\Allen\Documents\GitHub\oras\bot.js:928:36)
+    at Object.exports.parse (C:\Users\Allen\Documents\GitHub\oras\command-parser.js:346:28)
+    at Room.chat (C:\Users\Allen\Documents\GitHub\oras\rooms.js:84:27)
+    at User.processChatQueue (C:\Users\Allen\Documents\GitHub\oras\users.js:1524:13)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
+
+Additional information:
+user = Da Bic Boi
+room = lobby
+message = /challenge infinitebot, randombattle
+
+TypeError: Cannot read property 'infinitebot' of undefined
+    at null._onTimeout (C:\Users\Allen\Documents\GitHub\oras\bot.js:537:1028)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:112:15)
