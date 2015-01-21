@@ -210,10 +210,11 @@ exports.groups = {
 		rank: 6
 	},
 	'#': {
-		id: "owner",
+		id: "	",
 		name: "Room Owner",
 		inherit: '@',
 		jurisdiction: 'u',
+		promote: '#',
 		roommod: true,
 		roomdriver: true,
 		declare: true,
