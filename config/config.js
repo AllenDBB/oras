@@ -214,7 +214,7 @@ exports.groups = {
 		name: "Room Owner",
 		inherit: '@',
 		jurisdiction: 'u',
-		promote: '#',
+		promote: true,
 		roommod: true,
 		roomdriver: true,
 		roomowner: true,
