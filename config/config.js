@@ -217,6 +217,7 @@ exports.groups = {
 		promote: '#',
 		roommod: true,
 		roomdriver: true,
+		roomowner: true,
 		declare: true,
 		modchatall: true,
 		roomonly: true,
