@@ -10,3 +10,8 @@
 [2014-11-11T02:51:07.944Z] (staff) Da Bic Boi set modjoin to ~.
 [2014-11-11T02:51:11.149Z] (staff) Da Bic Boi set modjoin to @.
 [2014-11-11T02:51:15.532Z] (staff) Da Bic Boi turned off modjoin.
+[2015-01-21T03:21:06.409Z] (staff) nonstopkevn kicked Quilavaa from staff
+[2015-01-21T03:22:12.464Z] (staff) nonstopkevn was banned by Quilavaa. (50.38.76.123)
+[2015-01-21T03:22:30.108Z] (staff) nonstopkevn was unbanned by Quilavaa.
+[2015-01-21T03:22:33.695Z] (staff) nonstopkevn was unlocked by Quilavaa.
+[2015-01-21T03:25:39.378Z] (staff) nonstopkevn kicked Quilavaa from staff
