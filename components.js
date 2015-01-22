@@ -691,7 +691,7 @@ var components = exports.components = {
     },
 
     poll: function (target, room, user) {
-        if (!this.can('poll')) return;
+        if (!this.can('broadcast')) return;
         if (Poll[room.id].question) return this.sendReply('There is currently a poll going on already.');
         if (!this.canTalk()) return;
 
@@ -716,12 +716,12 @@ var components = exports.components = {
     },
 
     tierpoll: function (target, room, user) {
-        if (!this.can('poll')) return;
+        if (!this.can('broadcast')) return;
         this.parse('/poll Tournament tier?, ' + Object.keys(Tools.data.Formats).filter(function (f) { return Tools.data.Formats[f].effectType === 'Format'; }).join(", "));
     },
 
     endpoll: function (target, room, user) {
-        if (!this.can('poll')) return;
+        if (!this.can('broadcast')) return;
         if (!Poll[room.id].question) return this.sendReply('There is no poll to end in this room.');
 
         var votes = Object.keys(Poll[room.id].options).length;

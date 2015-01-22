@@ -230,6 +230,8 @@ exports.groups = {
 		roomonly: true,
 		privateroom: true,
 		poll: true,
+		broadcast: true,
+		announce: true,
 		rank: 4
 	},
 	'@': {
@@ -271,6 +273,7 @@ exports.groups = {
 		joinbattle: true,
 		tournaments: true,
 		tournamentsmoderation: true,
+		announce: true, 
 		rank: 1
 	},
 	' ': {
